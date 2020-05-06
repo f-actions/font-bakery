@@ -35,6 +35,7 @@ async function run() {
       `font-bakery Action failed during fontbakery installation attempt with error ${err}`
     );
   }
+}
 
 //   try {
 //     console.log(`Configuration of ${projectName} started...`);
