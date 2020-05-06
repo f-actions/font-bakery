@@ -23,16 +23,18 @@ async function run() {
   // ==================
   try {
     if (fbVersion == "latest") {
-      await exec.exec("pip install --force-reinstall fontbakery");
+      await exec.exec("python -m pip install --force-reinstall fontbakery");
     } else if (fbVersion == "master") {
       await exec.exec(
-        "pip install --force-reinstall git+https://github.com/googlefonts/fontbakery.git"
+        "python -m pip install --force-reinstall git+https://github.com/googlefonts/fontbakery.git"
       );
     } else {
-      await exec.exec(`pip install --force-reinstall fontbakery==${fbVersion}`);
+      await exec.exec(
+        `python -m pip install --force-reinstall fontbakery==${fbVersion}`
+      );
     }
     // Show the installed version
-    await exec.exec("\n\npip show fontbakery");
+    await exec.exec("python -m pip show fontbakery");
   } catch (error) {
     core.setFailed(
       `font-bakery Action failed during fontbakery installation attempt with error ${error.message}`
