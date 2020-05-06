@@ -34,6 +34,9 @@ async function run() {
       );
     }
     // Show the installed version
+    console.log("");
+    console.log("Dependency versions after fontbakery installation:");
+    await exec.exec("python -m pip list");
     await exec.exec("python -m pip show fontbakery");
   } catch (error) {
     core.setFailed(
