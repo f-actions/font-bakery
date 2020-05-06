@@ -1,0 +1,27 @@
+name: "Font Bakery CI"
+description: "Font Bakery QA testing"
+inputs:
+  path: # id
+    description: "Path to build artifact testing directory"
+    required: false
+    default: "build"
+  subcmd: # id
+    description: "Font Bakery subcommand"
+    required: true
+  args:
+    description: "Font Bakery command line arguments"
+    required: true
+  version:
+    description: "Font Bakery version"
+    required: false
+    default: "latest"
+# outputs:
+#   projectname:
+#     description: "Typeface family name"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+
+branding:
+  icon: "type"
+  color: "purple"
