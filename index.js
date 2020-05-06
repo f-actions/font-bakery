@@ -40,6 +40,13 @@ async function run() {
       `font-bakery Action failed during fontbakery installation attempt with error ${error.message}`
     );
   }
+  try {
+    await exec.exec(`fontbakery ${fbSubCmd} ${fbArgs} ${buildPath}`);
+  } catch (error) {
+    core.setFailed(
+      `font-bakery Action failed during fontbakery execution attempt with error ${error.message}`
+    );
+  }
 }
 
 run();
