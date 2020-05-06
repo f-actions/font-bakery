@@ -1923,7 +1923,7 @@ async function run() {
     await exec.exec("python -m pip show fontbakery");
   } catch (error) {
     core.setFailed(
-      `font-bakery Action failed during fontbakery installation attempt with error ${err}`
+      `font-bakery Action failed during fontbakery installation attempt with error ${error.message}`
     );
   }
 }
