@@ -40,14 +40,33 @@ async function run() {
     await exec.exec("python -m pip show fontbakery");
   } catch (error) {
     core.setFailed(
-      `font-bakery Action failed during fontbakery installation attempt with error ${error.message}`
+      `font-bakery Action failed during fontbakery installation attempt with error: ${error.message}`
     );
   }
+  // ==========================
+  // Display files to be tested
+  // ==========================
+  try {
+    const globber = await glob.create(`${buildPath}`);
+    console.log("");
+    console.log("Beginning fontbakery tests on the following files:");
+    for await (const file of globber.globGenerator()) {
+      console.log(file);
+    }
+    console.log("");
+  } catch (error) {
+    core.setFailed(
+      `font-bakery Action failed during fontbakery file path display attempt with error: ${error.message}`
+    );
+  }
+  // ========================
+  // Execute fontbakery tests
+  // ========================
   try {
     await exec.exec(`fontbakery ${fbSubCmd} ${fbArgs} ${buildPath}`);
   } catch (error) {
     core.setFailed(
-      `font-bakery Action failed during fontbakery execution attempt with error ${error.message}`
+      `font-bakery Action failed during fontbakery execution attempt with error: ${error.message}`
     );
   }
 }
