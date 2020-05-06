@@ -30,6 +30,8 @@ async function run() {
         `python -m pip install --force-reinstall fontbakery==${fbVersion}`
       );
     }
+    // Show the installed version
+    await exec.exec("python -m pip show fontbakery");
   } catch (error) {
     core.setFailed(
       `font-bakery Action failed during fontbakery installation attempt with error ${err}`
