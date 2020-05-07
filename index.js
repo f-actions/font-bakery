@@ -22,9 +22,9 @@ async function run() {
   // Install fontbakery
   // ==================
   try {
-    if (fbVersion == "latest") {
+    if (fbVersion === "latest") {
       await exec.exec("python -m pip install --force-reinstall fontbakery");
-    } else if (fbVersion == "master") {
+    } else if (fbVersion === "master") {
       await exec.exec(
         "python -m pip install --force-reinstall git+https://github.com/googlefonts/fontbakery.git"
       );
