@@ -1,16 +1,11 @@
-parserOptions:
-  ecmaVersion: 6
-
-env:
-  node: true
-
 extends:
-  - eslint:recommended
-  - airbnb-base
+  - wesbos
+
+parser: "babel-eslint"
 
 rules:
   no-console:
-    - error
-    - allow:
-        - warn
-        - error
+    - off
+  quotes: 0
+  prettier/prettier:
+    - singleQuote: false
