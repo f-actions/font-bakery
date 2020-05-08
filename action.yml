@@ -15,9 +15,7 @@ inputs:
     description: "Font Bakery version"
     required: false
     default: "latest"
-# outputs:
-#   projectname:
-#     description: "Typeface family name"
+
 runs:
   using: "node12"
   main: "dist/index.js"

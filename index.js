@@ -23,14 +23,14 @@ async function run() {
   // ==================
   try {
     if (fbVersion === "latest") {
-      await exec.exec("python -m pip install --force-reinstall fontbakery");
+      await exec.exec("python -m pip install --upgrade fontbakery");
     } else if (fbVersion === "master") {
       await exec.exec(
-        "python -m pip install --force-reinstall git+https://github.com/googlefonts/fontbakery.git"
+        "python -m pip install --upgrade git+https://github.com/googlefonts/fontbakery.git"
       );
     } else {
       await exec.exec(
-        `python -m pip install --force-reinstall fontbakery==${fbVersion}`
+        `python -m pip install --upgrade fontbakery==${fbVersion}`
       );
     }
     // Show the installed version
