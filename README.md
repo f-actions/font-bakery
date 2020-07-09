@@ -1,6 +1,6 @@
 # f-actions/font-bakery GitHub Action
 
-This GitHub Action installs the [googlefonts/fontbakery]() typeface project quality assurance tool and executes the tool on a user-specified filepath as part of a remote continuous integration testing pipeline.  The Action requires a Python runner environment.
+This GitHub Action installs the [googlefonts/fontbakery](https://github.com/googlefonts/fontbakery/) typeface project quality assurance tool and executes the tool on a user-specified filepath as part of a remote continuous integration testing pipeline.  The Action requires a Python runner environment.
 
 ## Quick Start
 
