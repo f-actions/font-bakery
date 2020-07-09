@@ -24,13 +24,13 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.8"
-    - name: Test with fontbakery
-      uses: f-actions/font-bakery@v1
-      with:
-        subcmd: "check-universal"
-        args: "--loglevel WARN"
-        path: "path/to/*.ttf"
-        version: "latest"
+      - name: Test with fontbakery
+        uses: f-actions/font-bakery@v1
+        with:
+          subcmd: "check-universal"
+          args: "--loglevel WARN"
+          path: "path/to/*.ttf"
+          version: "latest"
 ```
 
 See the Inputs section below for details on the defaults and optional configuration settings.
