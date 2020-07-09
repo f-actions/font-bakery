@@ -1,5 +1,5 @@
 dist: src/*.js package*.json
-	npm run package
+	npm i && npm run package
 
 update:
 	npm update
