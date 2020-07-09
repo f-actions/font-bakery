@@ -27,9 +27,9 @@ jobs:
     - name: Test with fontbakery
       uses: f-actions/font-bakery@v1
       with:
-        path: "path/to/*.ttf"
         subcmd: "check-universal"
         args: "--loglevel WARN"
+        path: "path/to/*.ttf"
         version: "latest"
 ```
 
