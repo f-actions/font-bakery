@@ -22,6 +22,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Python environment report
         run: python -c "import sys; print(sys.version)"
+      - name: Action CI - default
+        uses: f-actions/font-bakery@master
+        with:
+          subcmd: "--help"
       - name: Action CI - default with single file
         uses: f-actions/font-bakery@master
         with:
@@ -34,3 +38,17 @@ jobs:
           subcmd: "check-profile"
           args: "tests/check-test.py"
           path: "tests/*.ttf"
+      - name: Action CI - fontbakery master branch version
+        uses: f-actions/font-bakery@master
+        with:
+          subcmd: "check-profile"
+          args: "tests/check-test.py"
+          path: "tests/*.ttf"
+          version: "master"
+      - name: Action CI - fontbakery pinned release version
+        uses: f-actions/font-bakery@master
+        with:
+          subcmd: "check-profile"
+          args: "tests/check-test.py"
+          path: "tests/*.ttf"
+          version: "0.7.25"
