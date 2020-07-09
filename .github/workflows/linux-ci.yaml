@@ -1,0 +1,34 @@
+name: Linux CI
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  push:
+  pull_request:
+
+jobs:
+  ci-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    name: Linux CI
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }} environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Python environment report
+        run: python -c "import sys; print(sys.version)"
+      - name: Action CI - default with single file
+        uses: f-actions/font-bakery@master
+        with:
+          subcmd: "check-universal"
+          path: "tests/NotoSans-Regular.ttf"
+      - name: Action CI - default with wildcard path
+        uses: f-actions/font-bakery@master
+        with:
+          subcmd: "check-universal"
+          path: "tests/*.ttf"
