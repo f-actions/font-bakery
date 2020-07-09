@@ -29,7 +29,7 @@ jobs:
         with:
           subcmd: "check-universal"
           args: "--loglevel WARN"
-          path: "path/to/*.ttf"
+          path: "path/to/*.ttf"  # relative to root of repository
           version: "latest"
 ```
 
@@ -41,7 +41,7 @@ Configure the Action with the following settings:
 
 ### `args`
 
-**Mandatory** The non-path arguments to the fontbakery executable.  For example, this is a location where the log level may be set. The setting below limits reporting to log levels of WARN and higher:
+**Optional** The non-path arguments to the fontbakery executable.  For example, this is a location where the log level may be set. The setting below limits reporting to log levels of WARN and higher:
 
 ```
 args: "--loglevel WARN"
@@ -51,7 +51,7 @@ args: "--loglevel WARN"
 
 ### `path`
 
-**Mandatory** The path to the font file(s).  You may use wildcards in this path definition.
+**Optional** The path to the font file(s).  You may use wildcards in this path definition. Default: `build` directory
 
  ```
 path: "path/to/*.ttf"

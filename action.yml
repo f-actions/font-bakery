@@ -10,7 +10,8 @@ inputs:
     required: true
   args:
     description: "Font Bakery command line arguments"
-    required: true
+    required: false
+    default: "none"
   version:
     description: "Font Bakery version"
     required: false

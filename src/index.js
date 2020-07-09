@@ -63,7 +63,11 @@ async function run() {
   // Execute fontbakery tests
   // ========================
   try {
-    await exec.exec(`fontbakery ${fbSubCmd} ${fbArgs} ${buildPath}`);
+    if (fbArgs !== "none") {
+      await exec.exec(`fontbakery ${fbSubCmd} ${fbArgs} ${buildPath}`);
+    } else {
+      await exec.exec(`fontbakery ${fbSubCmd} ${buildPath}`);
+    }
   } catch (error) {
     core.setFailed(
       `font-bakery Action failed during fontbakery execution attempt with error: ${error.message}`
