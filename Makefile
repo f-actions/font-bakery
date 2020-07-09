@@ -7,4 +7,7 @@ update:
 dev-update:
 	npm update --dev
 
-.PHONY: dev-update update
+lint:
+	npm run lint
+
+.PHONY: dev-update update lint
