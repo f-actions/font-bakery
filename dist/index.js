@@ -19,7 +19,13 @@ module.exports =
 /******/ 		};
 /******/
 /******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		var threw = true;
+/******/ 		try {
+/******/ 			modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 			threw = false;
+/******/ 		} finally {
+/******/ 			if(threw) delete installedModules[moduleId];
+/******/ 		}
 /******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
@@ -34,7 +40,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(104);
+/******/ 		return __webpack_require__(676);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -1884,87 +1890,6 @@ function regExpEscape (s) {
 
 /***/ }),
 
-/***/ 104:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
-
-const core = __webpack_require__(470);
-const glob = __webpack_require__(281);
-const exec = __webpack_require__(986);
-
-async function run() {
-  const buildPath = core.getInput("path");
-  const fbSubCmd = core.getInput("subcmd");
-  const fbArgs = core.getInput("args");
-  const fbVersion = core.getInput("version");
-
-  // const options = {};
-  // options.listeners = {
-  //   stdout: (data) => {
-  //     myOutput += data.toString();
-  //   },
-  //   stderr: (data) => {
-  //     myError += data.toString();
-  //   },
-  // };
-
-  // ==================
-  // Install fontbakery
-  // ==================
-  try {
-    if (fbVersion === "latest") {
-      await exec.exec("python -m pip install --upgrade fontbakery");
-    } else if (fbVersion === "master") {
-      await exec.exec(
-        "python -m pip install --upgrade git+https://github.com/googlefonts/fontbakery.git"
-      );
-    } else {
-      await exec.exec(
-        `python -m pip install --upgrade fontbakery==${fbVersion}`
-      );
-    }
-    // Show the installed version
-    console.log("");
-    console.log("Dependency versions after fontbakery installation:");
-    await exec.exec("python -m pip list");
-    await exec.exec("python -m pip show fontbakery");
-  } catch (error) {
-    core.setFailed(
-      `font-bakery Action failed during fontbakery installation attempt with error: ${error.message}`
-    );
-  }
-  // ==========================
-  // Display files to be tested
-  // ==========================
-  try {
-    const globber = await glob.create(`${buildPath}`);
-    console.log("");
-    console.log("Beginning fontbakery tests on the following files:");
-    for await (const file of globber.globGenerator()) {
-      console.log(file);
-    }
-    console.log("");
-  } catch (error) {
-    core.setFailed(
-      `font-bakery Action failed during fontbakery file path display attempt with error: ${error.message}`
-    );
-  }
-  // ========================
-  // Execute fontbakery tests
-  // ========================
-  try {
-    await exec.exec(`fontbakery ${fbSubCmd} ${fbArgs} ${buildPath}`);
-  } catch (error) {
-    core.setFailed(
-      `font-bakery Action failed during fontbakery execution attempt with error: ${error.message}`
-    );
-  }
-}
-
-run();
-
-
-/***/ }),
-
 /***/ 129:
 /***/ (function(module) {
 
@@ -3295,6 +3220,87 @@ function isUnixExecutable(stats) {
         ((stats.mode & 64) > 0 && stats.uid === process.getuid()));
 }
 //# sourceMappingURL=io-util.js.map
+
+/***/ }),
+
+/***/ 676:
+/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+
+const core = __webpack_require__(470);
+const glob = __webpack_require__(281);
+const exec = __webpack_require__(986);
+
+async function run() {
+  const buildPath = core.getInput("path");
+  const fbSubCmd = core.getInput("subcmd");
+  const fbArgs = core.getInput("args");
+  const fbVersion = core.getInput("version");
+
+  // const options = {};
+  // options.listeners = {
+  //   stdout: (data) => {
+  //     myOutput += data.toString();
+  //   },
+  //   stderr: (data) => {
+  //     myError += data.toString();
+  //   },
+  // };
+
+  // ==================
+  // Install fontbakery
+  // ==================
+  try {
+    if (fbVersion === "latest") {
+      await exec.exec("python -m pip install --upgrade fontbakery");
+    } else if (fbVersion === "master") {
+      await exec.exec(
+        "python -m pip install --upgrade git+https://github.com/googlefonts/fontbakery.git"
+      );
+    } else {
+      await exec.exec(
+        `python -m pip install --upgrade fontbakery==${fbVersion}`
+      );
+    }
+    // Show the installed version
+    console.log("");
+    console.log("Dependency versions after fontbakery installation:");
+    await exec.exec("python -m pip list");
+    await exec.exec("python -m pip show fontbakery");
+  } catch (error) {
+    core.setFailed(
+      `font-bakery Action failed during fontbakery installation attempt with error: ${error.message}`
+    );
+  }
+  // ==========================
+  // Display files to be tested
+  // ==========================
+  try {
+    const globber = await glob.create(`${buildPath}`);
+    console.log("");
+    console.log("Beginning fontbakery tests on the following files:");
+    for await (const file of globber.globGenerator()) {
+      console.log(file);
+    }
+    console.log("");
+  } catch (error) {
+    core.setFailed(
+      `font-bakery Action failed during fontbakery file path display attempt with error: ${error.message}`
+    );
+  }
+  // ========================
+  // Execute fontbakery tests
+  // ========================
+  try {
+    await exec.exec(`fontbakery ${fbSubCmd} ${fbArgs} ${buildPath}`);
+  } catch (error) {
+    core.setFailed(
+      `font-bakery Action failed during fontbakery execution attempt with error: ${error.message}`
+    );
+  }
+}
+
+run();
+
 
 /***/ }),
 
