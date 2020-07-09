@@ -46,7 +46,7 @@ Configure the Action with the following settings:
 
 ### `args`
 
-**Optional** The non-path arguments to the fontbakery executable.  For example, this is a location where the log level may be set. The setting below limits reporting to log levels of WARN and higher:
+**Optional** The non-path arguments to the fontbakery executable sub-command.  For example, this is a location where the log level may be set. The setting below limits reporting to log levels of WARN and higher:
 
 ```
 args: "--loglevel WARN"
@@ -69,6 +69,8 @@ path: "path/to/*.ttf"
  ```
 subcmd: "check-universal"
  ```
+
+ See `fontbakery --help` or the [fontbakery documentation](https://font-bakery.readthedocs.io/en/stable/) for additional details.
 
 ### `version`
 
