@@ -1,0 +1,1 @@
+The Noto font artifacts distributed in this repository are licensed under the SIL Open Font License v1.1.  Please see [LICENSE_OFL.txt](LICENSE_OFL.txt) for the full text of the license.
