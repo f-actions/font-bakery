@@ -1,4 +1,4 @@
-name: Linux CI
+name: Action CI
 
 on:
   schedule:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
-    name: Linux CI
+    name: Action CI
     steps:
       - name: Check out source repository
         uses: actions/checkout@v2
