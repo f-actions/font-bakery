@@ -28,9 +28,9 @@ jobs:
         uses: f-actions/font-bakery@v1
         with:
           subcmd: "check-universal"
-          args: "--loglevel WARN"
+          args: "--loglevel WARN"  # optional
           path: "path/to/*.ttf"  # relative to root of repository
-          version: "latest"
+          version: "latest"  # optional, latest PyPI release is default
 ```
 
 See the Inputs section below for details on the defaults and optional configuration settings.
