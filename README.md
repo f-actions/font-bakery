@@ -8,7 +8,9 @@ This GitHub Action installs the [googlefonts/fontbakery](https://github.com/goog
 
 ## Quick Start
 
-Note that these steps require that the fonts are built in your CI workflow before the fontbakery testing steps are executed *or* are under git version control and pushed to a remote source repository directory path.
+Create a yaml formatted GitHub Actions configuration file on the directory path `.github/workflows` in your source repository.  Please review the GitHub Actions documentation for detailed instructions on the configuation file syntax.
+
+**Please note**: These steps require that the fonts are built in your CI workflow before the fontbakery testing steps are executed *or* are under git version control and pushed to a remote source repository directory path.  The example below assumes a Makefile based build that uses the default make target.  Customize the build command with the approach that you use in your project.
 
 ### Example workflow
 
@@ -20,24 +22,33 @@ on: [push, pull_request]
 jobs:
   fontbakery:
     runs-on: ubuntu-latest
-    name: Font Bakery QA tests
+    name: Font Bakery QA tests  # Customize to edit the string in your GitHub CI UI
     steps:
       - name: Check out source repository
         uses: actions/checkout@v2
       - name: Set up Python environment
         uses: actions/setup-python@v1
         with:
-          python-version: "3.8"
-      - name: Test with fontbakery
+          python-version: "3.8"  # supports any Py3.6+ version available in Actions
+      - name: Build fonts
+        run: make  # enter your build shell commands here
+      - name: fontbakery TTF checks
         uses: f-actions/font-bakery@v1
         with:
-          subcmd: "check-universal"
-          args: "--loglevel WARN"  # optional
-          path: "path/to/*.ttf"  # relative to root of repository
+          subcmd: "check-universal"  # fontbakery sub-command
+          args: "--loglevel WARN"  # optional arguments to fontbakery
+          path: "path/to/*.ttf"  # font path relative to root of repository
+          version: "latest"  # optional, latest PyPI release is default
+      - name: fontbakery OTF checks
+        uses: f-actions/font-bakery@v1
+        with:
+          subcmd: "check-universal"  # fontbakery sub-command
+          args: "--loglevel WARN"  # optional arguments to fontbakery
+          path: "path/to/*.otf"  # font path relative to root of repository
           version: "latest"  # optional, latest PyPI release is default
 ```
 
-See the Inputs section below for details on the defaults and optional configuration settings.
+See the Inputs section below for details on default inputs and optional configuration settings.
 
 ## Inputs
 
