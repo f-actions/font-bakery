@@ -84,7 +84,15 @@ subcmd: "check-universal"
 
 ### `version`
 
-**Optional** The fontbakery version that should be used for testing.  This supports PyPI releases and direct source repository master branch installations.  Options: ["latest", "master", "[VERSION NUMBER]"].  Default: "latest" = latest PyPI release version.
+**Optional** The fontbakery version that should be used for testing.  This supports PyPI releases and direct source repository master branch installations.  
+
+Default: "latest" = latest PyPI release version.
+
+Options:
+
+- "latest" = latest PyPI release version (this approach will automatically bump the fontbakery version with new releases)
+- "master" = master branch HEAD commit (this approach will automatically bump the fontbakery version with new commits that are pushed to the master branch of the fontbakery source repository)
+- "[VERSION NUMBER]" = PyPI release version number (this approach pins the fontbakery package at a release version number)
 
 ## Outputs
 
