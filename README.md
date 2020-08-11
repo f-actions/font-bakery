@@ -92,7 +92,7 @@ Options:
 
 - "latest" = latest PyPI release version (this approach will automatically bump the fontbakery version with new releases)
 - "master" = master branch HEAD commit (this approach will automatically bump the fontbakery version with new commits that are pushed to the master branch of the fontbakery source repository)
-- "[VERSION NUMBER]" = PyPI release version number (this approach pins the fontbakery package at a release version number)
+- "[VERSION NUMBER]" = PyPI release version number, e.g. `"0.7.28"` (this approach pins the fontbakery package at a release version number)
 
 ## Outputs
 
