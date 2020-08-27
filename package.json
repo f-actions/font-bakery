@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/f-actions/font-bakery",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.5",
     "@actions/exec": "^1.0.4",
     "@actions/glob": "^0.1.0"
   },
