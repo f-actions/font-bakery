@@ -25,22 +25,22 @@ jobs:
     name: Font Bakery QA tests  # Customize to edit the string in your GitHub CI UI
     steps:
       - name: Check out source repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python environment
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.8"  # supports any Py3.6+ version available in Actions
+          python-version: "3.11"  # supports any Py3.6+ version available in Actions
       - name: Build fonts
         run: make  # enter your build shell commands here
       - name: fontbakery TTF checks
-        uses: f-actions/font-bakery@v1
+        uses: f-actions/font-bakery@v2
         with:
           subcmd: "check-universal"  # fontbakery sub-command
           args: "--loglevel WARN"  # optional arguments to fontbakery
           path: "path/to/*.ttf"  # font path relative to root of repository
           version: "latest"  # optional, latest PyPI release is default
       - name: fontbakery OTF checks
-        uses: f-actions/font-bakery@v1
+        uses: f-actions/font-bakery@v2
         with:
           subcmd: "check-universal"  # fontbakery sub-command
           args: "--loglevel WARN"  # optional arguments to fontbakery
@@ -92,7 +92,7 @@ Options:
 
 - "latest" = [latest PyPI release version](https://pypi.org/project/fontbakery/) (this approach will automatically bump the fontbakery version with new releases)
 - "pre" = latest PyPI pre-release version (this approach will automatically bump the fontbakery version with new pre-releases)
-- "master" = master branch HEAD commit (this approach will automatically bump the fontbakery version with new commits that are pushed to the master branch of the fontbakery source repository)
+- "main" = main branch HEAD commit (this approach will automatically bump the fontbakery version with new commits that are pushed to the main branch of the fontbakery source repository)
 - "[VERSION NUMBER]" = PyPI release version number, e.g. `"0.7.28"` (this approach pins the fontbakery package at a release version number)
 
 ## Outputs
