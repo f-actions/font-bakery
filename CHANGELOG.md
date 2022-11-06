@@ -3,6 +3,7 @@
 ## v1.1.0
 
 - add `version` configuration input field `pre` option, this installs pre-release versions of fontbakery (#164)
+- update cPython CI testing versions to 3.8, 3.9, 3.10, 3.11
 - update actions/core to ^1.10.0
 - update actions/exec to ^1.1.1
 - update actions/glob to ^0.3.0
