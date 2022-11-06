@@ -22,9 +22,11 @@ async function run() {
   // Install fontbakery
   // ==================
   try {
-    if (fbVersion === "latest") {
+    if (fbVersion === "latest") {  // this installs the latest stable release
       await exec.exec("python -m pip install --upgrade fontbakery");
-    } else if (fbVersion === "master") {
+    } else if (fbVersion === "pre") { // pre-releases happen much more often
+      await exec.exec("python -m pip install --pre --upgrade fontbakery");
+    } else if (fbVersion === "master") { // here one gets the bleeding edge of the git develoment tree
       await exec.exec(
         "python -m pip install --upgrade git+https://github.com/googlefonts/fontbakery.git"
       );
