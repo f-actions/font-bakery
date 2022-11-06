@@ -38,13 +38,13 @@ jobs:
           subcmd: "check-profile"
           args: "tests/check-test.py"
           path: "tests/*.ttf"
-      - name: Action CI - fontbakery master branch version
+      - name: Action CI - fontbakery main branch version
         uses: f-actions/font-bakery@master
         with:
           subcmd: "check-profile"
           args: "tests/check-test.py"
           path: "tests/*.ttf"
-          version: "master"
+          version: "main"
       - name: Action CI - fontbakery pinned release version
         uses: f-actions/font-bakery@master
         with:
