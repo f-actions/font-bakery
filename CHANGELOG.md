@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0
+
+- change `version` configuration input field "master" definition to "main" (**Note**: backwards incompatible change for users who were previous users of the "master" definition)
+- update the f-actions/font-bakery Action to use node.js v16 (addresses GitHub deprecation warnings)
+- update all CI test workflows in this repository to use node.js 16 versions
+
 ## v1.1.0
 
 - add `version` configuration input field `pre` option, this installs pre-release versions of fontbakery (#164)
