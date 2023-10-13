@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.0.0
+
+- [Backwards incompatible with fontbakery < v0.9.0] added default support for the fontbakery all extras dependencies installation at fontbakery install
+- [Backwards incomaptible with f-actions/font-bakery@v2 and earlier] Made the `path` font path input mandatory and removed the default definition if this is not defined
+- removed a number of unnecessary node dev depependencies
+- revised the eslint configuration on the JS source lints
+- updated estlint CI testing to use a node20 environment (from node16 which is deprecated)
+- updated Makefile dev-update target to use the updated npm option definition approach to developer dependency updates
+- updated Makefile dist target to include `--legacy-peer-deps` and `NODE_OPTIONS=--openssl-legacy-provider` options at distribution JS file build time
+- updated the README link to the fontbakery project which has moved to the fonttools org from the googlefonts org since our last release here
+
 ## v2.0.0
 
 - change `version` configuration input field "master" definition to "main" (**Note**: backwards incompatible change for users who were previous users of the "master" definition)
