@@ -5,7 +5,7 @@ update:
 	npm update
 
 dev-update:
-	npm update --dev
+	npm update --include=dev
 
 lint:
 	npm run lint
