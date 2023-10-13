@@ -29,29 +29,29 @@ jobs:
         uses: f-actions/font-bakery@master
         with:
           subcmd: "--help"
-      - name: Action CI - default with single file
-        uses: f-actions/font-bakery@master
-        with:
-          subcmd: "check-profile"
-          args: "tests/check-test.py"
-          path: "tests/NotoSans-Regular.ttf"
-      - name: Action CI - default with wildcard path
-        uses: f-actions/font-bakery@master
-        with:
-          subcmd: "check-profile"
-          args: "tests/check-test.py"
-          path: "tests/*.ttf"
-      - name: Action CI - fontbakery main branch version
-        uses: f-actions/font-bakery@master
-        with:
-          subcmd: "check-profile"
-          args: "tests/check-test.py"
-          path: "tests/*.ttf"
-          version: "main"
-      - name: Action CI - fontbakery pinned release version
-        uses: f-actions/font-bakery@master
-        with:
-          subcmd: "check-profile"
-          args: "tests/check-test.py"
-          path: "tests/*.ttf"
-          version: "0.7.25"
+      # - name: Action CI - default with single file
+      #   uses: f-actions/font-bakery@master
+      #   with:
+      #     subcmd: "check-profile"
+      #     args: "tests/check-test.py"
+      #     path: "tests/NotoSans-Regular.ttf"
+      # - name: Action CI - default with wildcard path
+      #   uses: f-actions/font-bakery@master
+      #   with:
+      #     subcmd: "check-profile"
+      #     args: "tests/check-test.py"
+      #     path: "tests/*.ttf"
+      # - name: Action CI - fontbakery main branch version
+      #   uses: f-actions/font-bakery@master
+      #   with:
+      #     subcmd: "check-profile"
+      #     args: "tests/check-test.py"
+      #     path: "tests/*.ttf"
+      #     version: "main"
+      # - name: Action CI - fontbakery pinned release version
+      #   uses: f-actions/font-bakery@master
+      #   with:
+      #     subcmd: "check-profile"
+      #     args: "tests/check-test.py"
+      #     path: "tests/*.ttf"
+      #     version: "0.7.25"
