@@ -4,7 +4,7 @@
 [![Action CI](https://github.com/f-actions/font-bakery/workflows/Action%20CI/badge.svg)](https://github.com/f-actions/font-bakery/actions?query=workflow%3A%22Action+CI%22)
 [![Lint](https://github.com/f-actions/font-bakery/workflows/Lint/badge.svg)](https://github.com/f-actions/font-bakery/actions?query=workflow%3ALint)
 
-This GitHub Action installs the [googlefonts/fontbakery](https://github.com/googlefonts/fontbakery/) typeface project quality assurance tool and executes the tool on a user-specified filepath as part of a remote continuous integration testing pipeline.  The Action requires a Python v3.6+ runner environment.
+This GitHub Action installs the [googlefonts/fontbakery](https://github.com/fonttools/fontbakery) typeface project quality assurance tool and executes the tool on a user-specified filepath as part of a remote continuous integration testing pipeline.  The Action requires a Python v3.8+ runner environment.
 
 ## Quick Start
 
@@ -33,17 +33,17 @@ jobs:
       - name: Build fonts
         run: make  # enter your build shell commands here
       - name: fontbakery TTF checks
-        uses: f-actions/font-bakery@v2
+        uses: f-actions/font-bakery@v3
         with:
           subcmd: "check-universal"  # fontbakery sub-command
-          args: "--loglevel WARN"  # optional arguments to fontbakery
+          args: "--loglevel WARN"  # optional, arguments to fontbakery
           path: "path/to/*.ttf"  # font path relative to root of repository
           version: "latest"  # optional, latest PyPI release is default
       - name: fontbakery OTF checks
-        uses: f-actions/font-bakery@v2
+        uses: f-actions/font-bakery@v3
         with:
           subcmd: "check-universal"  # fontbakery sub-command
-          args: "--loglevel WARN"  # optional arguments to fontbakery
+          args: "--loglevel WARN"  # optional, arguments to fontbakery
           path: "path/to/*.otf"  # font path relative to root of repository
           version: "latest"  # optional, latest PyPI release is default
 ```
@@ -66,7 +66,7 @@ args: "--loglevel WARN"
 
 ### `path`
 
-**Optional** The path to the font file(s).  You may use wildcards in this path definition. Default: `build` directory
+**Mandatory** The path to the font file(s).  You may use wildcards in this path definition.
 
  ```
 path: "path/to/*.ttf"
@@ -83,6 +83,8 @@ subcmd: "check-universal"
  See `fontbakery --help` or the [fontbakery documentation](https://font-bakery.readthedocs.io/en/stable/) for additional details.
 
 ### `version`
+
+**Please note**: If you define installations of fontbakery < v0.9.0 with this input field, you must remain on the `v2` branch of this GitHub Action.  We introduced backwards incompatible changes that will not work with the installation of fontbakery versions < v.0.9.0 as of the `v3.0.0` Action release.
 
 **Optional** The fontbakery version that should be used for testing.  This supports PyPI releases and direct source repository master branch installations.  
 

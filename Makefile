@@ -1,11 +1,11 @@
 dist: src/*.js package*.json
-	npm i && npm run package
+	npm i --legacy-peer-deps && NODE_OPTIONS=--openssl-legacy-provider npm run package
 
 update:
 	npm update
 
 dev-update:
-	npm update --dev
+	npm update --include=dev
 
 lint:
 	npm run lint

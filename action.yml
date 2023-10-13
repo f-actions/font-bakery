@@ -3,8 +3,7 @@ description: "Font Bakery QA testing"
 inputs:
   path: # id
     description: "Path to build artifact testing directory"
-    required: false
-    default: "build"
+    required: true
   subcmd: # id
     description: "Font Bakery subcommand"
     required: true
@@ -18,7 +17,7 @@ inputs:
     default: "latest"
 
 runs:
-  using: "node16"
+  using: "node20"
   main: "dist/index.js"
 
 branding:
