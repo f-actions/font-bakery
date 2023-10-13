@@ -29,7 +29,7 @@ async function run() {
       // pre-releases happen much more often
       await exec.exec("python -m pip install --pre --upgrade fontbakery[all]");
     } else if (fbVersion === "main") {
-      // here one gets the bleeding edge of the git develoment tree
+      // here one gets the bleeding edge of the git development tree
       await exec.exec(
         "python -m pip install --upgrade fontbakery[all]@git+https://github.com/googlefonts/fontbakery.git"
       );
