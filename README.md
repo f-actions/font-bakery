@@ -1,7 +1,7 @@
 # f-actions/font-bakery GitHub Action
 
 ![Version](https://img.shields.io/github/v/release/f-actions/font-bakery?sort=semver)
-[![Action CI](https://github.com/f-actions/font-bakery/workflows/Action%20CI/badge.svg)](https://github.com/f-actions/font-bakery/actions?query=workflow%3A%22Action+CI%22)
+[![Action CI](https://github.com/f-actions/font-bakery/actions/workflows/action-ci.yaml/badge.svg)](https://github.com/f-actions/font-bakery/actions/workflows/action-ci.yaml)
 [![Lint](https://github.com/f-actions/font-bakery/workflows/Lint/badge.svg)](https://github.com/f-actions/font-bakery/actions?query=workflow%3ALint)
 
 This GitHub Action installs the [fonttools/fontbakery](https://github.com/fonttools/fontbakery) typeface project quality assurance tool and executes the tool on a user-specified filepath as part of a remote continuous integration testing pipeline.  The Action requires a Python v3.8+ runner environment.
