@@ -8,16 +8,6 @@ async function run() {
   const fbArgs = core.getInput("args");
   const fbVersion = core.getInput("version");
 
-  // const options = {};
-  // options.listeners = {
-  //   stdout: (data) => {
-  //     myOutput += data.toString();
-  //   },
-  //   stderr: (data) => {
-  //     myError += data.toString();
-  //   },
-  // };
-
   // ==================
   // Install fontbakery
   // ==================
