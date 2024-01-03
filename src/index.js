@@ -24,18 +24,22 @@ async function run() {
   try {
     if (fbVersion === "latest") {
       // this installs the latest stable release
-      await exec.exec("python -m pip install --upgrade fontbakery[all]");
+      await exec.exec(
+        "python -m pip install --upgrade fontbakery[all] fonttools[interpolatable]"
+      );
     } else if (fbVersion === "pre") {
       // pre-releases happen much more often
-      await exec.exec("python -m pip install --pre --upgrade fontbakery[all]");
+      await exec.exec(
+        "python -m pip install --pre --upgrade fontbakery[all] fonttools[interpolatable]"
+      );
     } else if (fbVersion === "main") {
       // here one gets the bleeding edge of the git development tree
       await exec.exec(
-        "python -m pip install --upgrade fontbakery[all]@git+https://github.com/googlefonts/fontbakery.git"
+        "python -m pip install --upgrade fontbakery[all]@git+https://github.com/googlefonts/fontbakery.git fonttools[interpolatable]"
       );
     } else {
       await exec.exec(
-        `python -m pip install --upgrade fontbakery[all]==${fbVersion}`
+        `python -m pip install --upgrade fontbakery[all]==${fbVersion} fonttools[interpolatable]`
       );
     }
     // Show the installed version
