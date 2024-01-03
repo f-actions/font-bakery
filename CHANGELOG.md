@@ -3,12 +3,8 @@
 ## v3.1.0
 
 - use the fontttools[interpolatable] extras on pip install.  This adds new Python dependencies, including scipy, that can significantly improve the execution time of interpolatable checks
-- updated regexp dev dependency to 4.10.0
-- updated busboy dev dependency to 2.1.0
-- updated acorn dev dependency to 8.11.3
-- updated fastq dev dependency to 1.16.0
-- updated flat-cache dev dependency to 3.2.0
-- updated undici dev dependency to 5.28.2
+- updated eslint to ^8.56.0
+- updated @vercel/ncc to ^0.38.1
 
 ## v3.0.0
 
