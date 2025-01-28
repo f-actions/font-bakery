@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.1.1
+
+- add support for automatic cairo library installations on Ubuntu runners. Ubuntu runners v24.04 and later no longer have cairo installed by default.
+- updated structured-clone library to v1.3.0
+
 ## v3.1.0
 
 - use the fontttools[interpolatable] extras on pip install.  This adds new Python dependencies, including scipy, that can significantly improve the execution time of interpolatable checks

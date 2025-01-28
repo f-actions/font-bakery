@@ -30106,8 +30106,10 @@ async function run() {
   if (_actions_core__WEBPACK_IMPORTED_MODULE_0__.platform.isLinux) {
     const { name, version } = await _actions_core__WEBPACK_IMPORTED_MODULE_0__.platform.getDetails();
     if (name === "Ubuntu" && version >= "24.04") {
-      console.log("Installing system dependencies...");
       const ubuntuDeps = ["libcairo2-dev"];
+      console.log(
+        `Installing system dependencies (${ubuntuDeps.join(" ")})...`
+      );
       try {
         await exec.exec("sudo apt-get update --quiet --quiet", null, {
           silent: true,
@@ -30124,7 +30126,6 @@ async function run() {
       }
     }
   }
-
   // ==================
   // Install fontbakery
   // ==================
