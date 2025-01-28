@@ -1,6 +1,6 @@
-const core = require('@actions/core');
-const glob = require('@actions/glob');
-const exec = require('@actions/exec');
+import core from '@actions/core';
+import exec from '@actions/exec';
+import glob from '@actions/glob';
 
 import { platform } from '@actions/core';
 
