@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.11", "3.12", "3.13"]
     name: Action CI
     steps:
       - name: Check out source repository
@@ -26,32 +26,27 @@ jobs:
       - name: Python environment report
         run: python -c "import sys; print(sys.version)"
       - name: Action CI - default
-        uses: f-actions/font-bakery@master
+        uses: ./
         with:
           subcmd: "--help"
-      # - name: Action CI - default with single file
-      #   uses: f-actions/font-bakery@master
-      #   with:
-      #     subcmd: "check-profile"
-      #     args: "tests/check-test.py"
-      #     path: "tests/NotoSans-Regular.ttf"
-      # - name: Action CI - default with wildcard path
-      #   uses: f-actions/font-bakery@master
-      #   with:
-      #     subcmd: "check-profile"
-      #     args: "tests/check-test.py"
-      #     path: "tests/*.ttf"
-      # - name: Action CI - fontbakery main branch version
-      #   uses: f-actions/font-bakery@master
-      #   with:
-      #     subcmd: "check-profile"
-      #     args: "tests/check-test.py"
-      #     path: "tests/*.ttf"
-      #     version: "main"
-      # - name: Action CI - fontbakery pinned release version
-      #   uses: f-actions/font-bakery@master
-      #   with:
-      #     subcmd: "check-profile"
-      #     args: "tests/check-test.py"
-      #     path: "tests/*.ttf"
-      #     version: "0.7.25"
+      - name: Action CI - default with single file
+        uses: ./
+        with:
+          subcmd: "check-profile"
+          args: "tests/check-test.py"
+          path: "tests/NotoSans-Regular.ttf"
+      - name: Action CI - default with wildcard path
+        uses: ./
+        with:
+          subcmd: "check-profile"
+          args: "tests/check-test.py"
+          path: "tests/*.ttf"
+      - name: Action CI - fontbakery main branch version
+        uses: ./
+        with:
+          subcmd: "check-profile"
+          args: "tests/check-test.py"
+          path: "tests/*.ttf"
+          version: "main"
+      - name: Action CI - fontbakery pinned release version
+        uses: ./
