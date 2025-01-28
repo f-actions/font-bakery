@@ -2,12 +2,42 @@ const core = require("@actions/core");
 const glob = require("@actions/glob");
 const exec = require("@actions/exec");
 
+import { platform } from "@actions/core";
+
 async function run() {
   const buildPath = core.getInput("path");
   const fbSubCmd = core.getInput("subcmd");
   const fbArgs = core.getInput("args");
   const fbVersion = core.getInput("version");
 
+  // =============
+  // Install cairo
+  // =============
+  // If running a new Ubuntu image, cairo is no longer preinstalled. Try and be
+  // helpful
+  if (platform.isLinux) {
+    const { name, version } = await platform.getDetails();
+    if (name === "Ubuntu" && version >= "24.04") {
+      const ubuntuDeps = ["libcairo2-dev"];
+      console.log(
+        `Installing system dependencies (${ubuntuDeps.join(" ")})...`
+      );
+      try {
+        await exec.exec("sudo apt-get update --quiet --quiet", null, {
+          silent: true,
+        });
+        await exec.exec(
+          "sudo apt-get install --yes --no-install-recommends --quiet",
+          ubuntuDeps,
+          { silent: true }
+        );
+      } catch (error) {
+        core.setFailed(
+          `font-bakery Action failed during system dependencies install with error: ${error.message}`
+        );
+      }
+    }
+  }
   // ==================
   // Install fontbakery
   // ==================
