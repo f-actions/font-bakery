@@ -1,28 +1,24 @@
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
-
-const compat = new FlatCompat({
-    baseDirectory: import.meta.url,
-});
+import js from "@eslint/js";
+import globals from "globals";
 
 export default [
-    js.configs.recommended,
-    {
-        languageOptions: {
-            ecmaVersion: 2021,
-            sourceType: 'module',
-            globals: {
-                console: 'readonly',
-            },
-        },
-        rules: {
-            'no-console': 'off',
-            'indent': ['error', 2],
-            'quotes': ['error', 'single'],
-            'semi': ['error', 'always'],
-            'no-unused-vars': ['warn'],
-            'eqeqeq': ['error', 'always'],
-            'curly': ['error', 'all'],
-        },
+  // Apply ESLint's recommended rules
+  js.configs.recommended,
+
+  // Custom project configuration
+  {
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.es2021,
+        chrome: "readonly",
+      },
     },
+    rules: {
+      // Custom rule overrides here if needed
+    },
+    ignores: ["node_modules/"],
+  },
 ];
