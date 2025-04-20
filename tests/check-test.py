@@ -1,10 +1,20 @@
-from fontbakery.profile import Section
+from fontbakery.profile import Profile, Section
 from fontbakery.status import PASS, FAIL
 from fontbakery.callable import check
-from fontbakery.fonts_profile import profile_factory
 
-profile_imports = ()
-profile = profile_factory(default_section=Section("Test profile for Action CI"))
+# Define the PROFILE metadata directly
+PROFILE = Profile(
+    sections=[
+        Section(
+            "Test profile for Action CI",
+            "A section containing checks for testing the f-actions/font-bakery GitHub Action.",
+        )
+    ],
+    # You can add other profile metadata here if needed, like iterargs
+)
+
+# Define the default section for checks if not explicitly assigned
+DEFAULT_SECTION = PROFILE.sections[0]
 
 PROFILE_CHECKS = [
     "com.factions/tests/alwayspass",
@@ -19,6 +29,7 @@ excluded_check_ids = ()
     A test check for CI testing of the f-actions/font-bakery GitHub
     Action
     """,
+    section=DEFAULT_SECTION,
 )
 def com_factions_tests_alwayspass(ttFonts):
     """Fake test for testing purposes"""
@@ -40,6 +51,6 @@ def check_skip_filter(checkid, font=None, **iterargs):
     return True, None
 
 
-profile.check_skip_filter = check_skip_filter
-profile.auto_register(globals())
-profile.test_expected_checks(PROFILE_CHECKS, exclusive=True)
+PROFILE.check_skip_filter = check_skip_filter
+PROFILE.auto_register(globals())
+PROFILE.test_expected_checks(PROFILE_CHECKS, exclusive=True)
