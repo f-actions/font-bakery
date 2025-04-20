@@ -4,6 +4,7 @@ from fontbakery.callable import check
 
 # Define the PROFILE metadata directly
 PROFILE = Profile(
+    name="f-actions Test Profile",
     sections=[
         Section(
             "Test profile for Action CI",
