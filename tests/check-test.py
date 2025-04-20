@@ -1,4 +1,5 @@
-from fontbakery.checkrunner import Section, PASS, FAIL
+from fontbakery.profile import Section
+from fontbakery.status import PASS, FAIL
 from fontbakery.callable import check
 from fontbakery.fonts_profile import profile_factory
 
@@ -29,6 +30,7 @@ def com_factions_tests_alwayspass(ttFonts):
 # End check definitions
 #
 # ================================================
+
 
 # skip filter function to exclude checks defined in the
 # fontbakery universal profile
