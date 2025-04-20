@@ -30,7 +30,6 @@ excluded_check_ids = ()
     A test check for CI testing of the f-actions/font-bakery GitHub
     Action
     """,
-    section=DEFAULT_SECTION,
 )
 def com_factions_tests_alwayspass(ttFonts):
     """Fake test for testing purposes"""
