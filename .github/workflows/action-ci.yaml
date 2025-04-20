@@ -50,3 +50,8 @@ jobs:
           version: "main"
       - name: Action CI - fontbakery pinned release version
         uses: ./
+        with:
+          subcmd: "check-profile"
+          args: "tests/check-test.py"
+          path: "tests/*.ttf"
+          version: "0.13.2"
