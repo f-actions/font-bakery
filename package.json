@@ -1,8 +1,9 @@
 {
   "name": "font-bakery",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "f-Actions Font Bakery Action",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "ncc build src/index.js -o dist",
@@ -36,6 +37,6 @@
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.1",
-    "eslint": "^8.57.0"
+    "eslint": "^9.19.0"
   }
 }

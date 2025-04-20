@@ -1,9 +1,21 @@
-from fontbakery.checkrunner import Section, PASS, FAIL
+from fontbakery.profile import Profile, Section
+from fontbakery.status import PASS, FAIL
 from fontbakery.callable import check
-from fontbakery.fonts_profile import profile_factory
 
-profile_imports = ()
-profile = profile_factory(default_section=Section("Test profile for Action CI"))
+# Define the PROFILE metadata directly
+PROFILE = Profile(
+    name="f-actions Test Profile",
+    sections=[
+        Section(
+            "Test profile for Action CI",
+            "A section containing checks for testing the f-actions/font-bakery GitHub Action.",
+        )
+    ],
+    # You can add other profile metadata here if needed, like iterargs
+)
+
+# Define the default section for checks if not explicitly assigned
+DEFAULT_SECTION = PROFILE.sections[0]
 
 PROFILE_CHECKS = [
     "com.factions/tests/alwayspass",
@@ -30,6 +42,7 @@ def com_factions_tests_alwayspass(ttFonts):
 #
 # ================================================
 
+
 # skip filter function to exclude checks defined in the
 # fontbakery universal profile
 def check_skip_filter(checkid, font=None, **iterargs):
@@ -38,6 +51,6 @@ def check_skip_filter(checkid, font=None, **iterargs):
     return True, None
 
 
-profile.check_skip_filter = check_skip_filter
-profile.auto_register(globals())
-profile.test_expected_checks(PROFILE_CHECKS, exclusive=True)
+PROFILE.check_skip_filter = check_skip_filter
+PROFILE.auto_register(globals())
+PROFILE.test_expected_checks(PROFILE_CHECKS, exclusive=True)
