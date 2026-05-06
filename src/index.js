@@ -1,8 +1,6 @@
-const core = require("@actions/core");
-const glob = require("@actions/glob");
-const exec = require("@actions/exec");
-
-import { platform } from "@actions/core";
+import * as core from "@actions/core";
+import * as exec from "@actions/exec";
+import * as glob from "@actions/glob";
 
 async function run() {
   const buildPath = core.getInput("path");
@@ -15,8 +13,8 @@ async function run() {
   // =============
   // If running a new Ubuntu image, cairo is no longer preinstalled. Try and be
   // helpful
-  if (platform.isLinux) {
-    const { name, version } = await platform.getDetails();
+  if (core.platform.isLinux) {
+    const { name, version } = await core.platform.getDetails();
     if (name === "Ubuntu" && version >= "24.04") {
       const ubuntuDeps = ["libcairo2-dev"];
       console.log(
