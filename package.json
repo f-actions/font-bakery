@@ -3,6 +3,7 @@
   "version": "4.0.0",
   "description": "f-Actions Font Bakery Action",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "package": "ncc build src/index.js -o dist",
