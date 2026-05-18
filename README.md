@@ -25,9 +25,9 @@ jobs:
     name: Font Bakery QA tests  # Customize to edit the string in your GitHub CI UI
     steps:
       - name: Check out source repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python environment
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"  # supports any Py3.6+ version available in Actions
       - name: Build fonts

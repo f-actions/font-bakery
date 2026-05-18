@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.0.0
+
+- update to Node 24 (addresses GitHub node 20 deprecation warnings for end users of this Action)
+- migrate source to ES modules; bump `@actions/core` to v3, `@actions/exec` to v3, `@actions/glob` to v0.7 (these toolkit majors are ESM-only)
+- bump CI workflow actions: `actions/checkout@v4`, `actions/setup-python@v5`, `actions/setup-node@v4`, `github/codeql-action@v3`
+- update CI Python matrix to 3.10 – 3.14
+
 ## v3.1.1
 
 - add support for automatic cairo library installations on Ubuntu runners. Ubuntu runners v24.04 and later no longer have cairo installed by default.
